@@ -424,7 +424,7 @@ on_commit(#ecomet_log{
   },
 
   % Run the search on the other nodes
-  [ rpc:cast( N,?MODULE,notify,[ Query, Log1 ]) || N <-ecomet_node:get_ready_nodes() -- [node()] ],
+  %%[ rpc:cast( N,?MODULE,notify,[ Query, Log1 ]) || N <-ecomet_node:get_ready_nodes() -- [node()] ],
 
   % Local search
   notify( Query, Log1 ),
