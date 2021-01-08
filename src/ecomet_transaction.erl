@@ -330,16 +330,19 @@ on_commit(_Invalid)->
 %% Internal helpers
 %%-----------------------------------------------------------------------
 tcommit()->
+  ?LOGINFO("tcommittttt "),
   case get(?TKEY) of
     undefined->
       ?LOGINFO("UNDEFINEEEEEED"),
       ?ERROR(no_transaction);
     % Root transaction
     #state{parent=none,log=Log,droplog = DropLog,dict=Dict,oncommit=OnCommits}->
+      ?LOGINFO("#state"),
       CommitLog=run_commit(lists:reverse(lists:subtract(Log,DropLog)),Dict,[]),
       erase(?TKEY),
       {CommitLog,OnCommits};
     State->
+      ?LOGINFO("Stateeeee"),
       put(?TKEY,merge_commit(State)),
       {[],[]}
   end.
