@@ -53,7 +53,7 @@ internal(Fun)->
     Result=Fun(),
     {Log,OnCommits}=tcommit(),
     {Result,Log,OnCommits}
-  end) of
+  end, 3) of
     {ok,{Result,Log,OnCommits}}->
       on_commit(Log,OnCommits),
       {ok,Result};
