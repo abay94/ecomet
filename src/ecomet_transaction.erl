@@ -51,6 +51,8 @@ internal(Fun)->
   ?LOGINFO("internal on internalinternalinternal\n"),
   tstart(internal),
   ?LOGINFO("tstart on tstart\n"),
+  QQQ=tcommit(),
+  ?LOGINFO("QQQ : ~p", [QQQ]),
   case ecomet_backend:transaction(fun()->
     Result=Fun(),
     {Log,OnCommits}=tcommit(),
