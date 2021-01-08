@@ -58,6 +58,7 @@ internal(Fun)->
       on_commit(Log,OnCommits),
       {ok,Result};
     {error,Error}->
+      io:format("ERRRRRORRRRR on transaction\n"),
       rollback(),
       {error,Error}
   end.
