@@ -48,7 +48,9 @@
 
 % Run fun within transaction
 internal(Fun)->
+  io:format("internal on internalinternalinternal\n"),
   tstart(internal),
+  io:format("tstart on tstart\n"),
   case ecomet_backend:transaction(fun()->
     Result=Fun(),
     {Log,OnCommits}=tcommit(),
