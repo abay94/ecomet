@@ -331,7 +331,9 @@ on_commit(_Invalid)->
 %%-----------------------------------------------------------------------
 tcommit()->
   case get(?TKEY) of
-    undefined->?ERROR(no_transaction);
+    undefined->
+      ?LOGINFO("UNDEFINEEEEEED"),
+      ?ERROR(no_transaction);
     % Root transaction
     #state{parent=none,log=Log,droplog = DropLog,dict=Dict,oncommit=OnCommits}->
       CommitLog=run_commit(lists:reverse(lists:subtract(Log,DropLog)),Dict,[]),
